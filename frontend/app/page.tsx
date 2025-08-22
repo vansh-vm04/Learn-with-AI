@@ -9,9 +9,11 @@ import { toast } from "react-toastify";
 export default function LandingPage() {
   const [input, setInput] = useState("");
   const [roadmapData, setRoadmapData] = useState();
+  const [loading,setLoading] = useState(false);
 
   const fetchRoadmap = async () => {
     try {
+      setLoading(true)
       const toastId = toast.loading("Generating Roadmap");
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/roadmap`,
@@ -44,6 +46,8 @@ export default function LandingPage() {
       setRoadmapData(data.content);
     } catch (err) {
       console.error(err);
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -118,7 +122,7 @@ export default function LandingPage() {
               className="brutalist-input smooth-type"
             />
           </div>
-          <button onClick={handleGenerate} className="comic-button">
+          <button disabled={loading} onClick={handleGenerate} className="comic-button">
             Generate
           </button>
         </div>
