@@ -5,10 +5,17 @@ import cors from "cors"
 
 const app = express();
 const port = 5000;
-
-app.use(cors());
-
 configDotenv();
+
+const frontend_origin = process.env.FRONTEND_URL;
+
+app.use(
+  cors({
+    origin: frontend_origin,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS','PATCH']
+  })
+);
 
 app.use(express.json());
 
