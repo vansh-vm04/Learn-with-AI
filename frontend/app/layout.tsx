@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bangers } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
+import { Analytics } from '@vercel/analytics/next';
 
 const bangers = Bangers({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className={`${bangers.variable} antialiased`}>
         {children}
         <ToastContainer position="top-center" autoClose={2000} />
+        <Analytics />
       </body>
     </html>
   );
