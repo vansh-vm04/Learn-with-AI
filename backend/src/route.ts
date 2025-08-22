@@ -30,6 +30,8 @@ router.post("/roadmap", async (req, res) => {
         content = await JSON.parse(response.choices[0]?.message.content!);
     }
 
+    console.log("success")
+
     res.status(200).json({message:"Success",content});
 
   } catch (error) {
