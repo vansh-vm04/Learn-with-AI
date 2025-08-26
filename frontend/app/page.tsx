@@ -5,8 +5,10 @@ import { Book, Brain, Code, LineChart } from "lucide-react";
 import RoadmapFlow from "@/components/RoadmapFlow";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useServerStart } from "@/hooks/useServerStart";
 
 export default function LandingPage() {
+  useServerStart();
   const [input, setInput] = useState("");
   const [roadmapData, setRoadmapData] = useState();
   const [loading,setLoading] = useState(false);

@@ -21,6 +21,10 @@ app.use(express.json());
 
 app.use('/api/v1',router);
 
+app.get('/api/health',async (req,res)=>{
+  res.status(200).json({message:"Server is alive"})
+})
+
 app.listen(port,()=>{
     console.log("Server listening on "+port)
 })
